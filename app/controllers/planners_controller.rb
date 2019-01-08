@@ -7,4 +7,15 @@ class PlannersController < ApplicationController
       erb :"planners/signup"
     end
   end
+
+  post '/signup' do 
+    @user = User.new(username: params[:username], password: params[:password])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/events'
+    else 
+      redirect '/signup'
+    end
+  end 
+  
 end
