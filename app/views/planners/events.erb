@@ -1,4 +1,4 @@
-<h1>Welcome, <%=@planner.username%></h1>
+<h1>Welcome, <%=@planner.username.capitalize%></h1>
   <h4>All Events:</h4>
   <%@planner.events.each do |event|%>
     <li><a href="/events/<%= genre.date %>"> <%=event.date%></a></li>
