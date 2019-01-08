@@ -40,4 +40,13 @@ class PlannersController < ApplicationController
     @planner = Planner.find_by_id(params[:id])
     erb :"/planners/planner_events"
   end
+  
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect '/login'
+    else 
+      redirect '/login'
+    end
+  end
 end
