@@ -1,4 +1,14 @@
 class EventsController < ApplicationController
+  get "/events" do
+    if logged_in?
+      @events = Event.all
+      @planner = current_user
+      erb :"/events/events"
+    else 
+       redirect "/login"
+    end 
+  end
+  
   get '/events/new' do
     if logged_in?
       erb :'/events/new'

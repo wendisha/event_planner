@@ -12,7 +12,7 @@ class PlannersController < ApplicationController
     @planner = Planner.new(username: params[:username], password: params[:password])
     if @planner.save
       session[:planner_id] = @planner.id
-      redirect '/events'
+      redirect '/planner_events'
     else 
       redirect '/signup'
     end
