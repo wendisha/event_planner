@@ -9,9 +9,9 @@ class PlannersController < ApplicationController
   end
 
   post '/signup' do 
-    @user = Planner.new(username: params[:username], password: params[:password])
-    if @user.save
-      session[:user_id] = @user.id
+    @planner = Planner.new(username: params[:username], password: params[:password])
+    if @planner.save
+      session[:planner_id] = @planner.id
       redirect '/events'
     else 
       redirect '/signup'
@@ -20,19 +20,24 @@ class PlannersController < ApplicationController
   
   get '/login' do
     if logged_in?
-      redirect "/events" 
+      erb :"/planners/events"
     else
       erb :"/planners/login"
     end
   end
   
   post '/login' do
-    @user = Planner.find_by(:username => params[:username])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect to "/events"
+    @planner = Planner.find_by(:username => params[:username])
+    if @planner && @planner.authenticate(params[:password])
+      session[:planner_id] = @planner.id
+      erb :"/planners/events"
     else 
       redirect to "/login"
     end
+  end
+  
+  get '/planners/:id' do
+    @planner = Planner.find_by_id(params[:id])
+    erb :"/planners/events"
   end
 end
