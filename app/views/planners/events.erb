@@ -1,0 +1,6 @@
+<h1>Welcome, <%=@planner.username%></h1>
+  <h4>All Events:</h4>
+  <%Event.all.each do |event|%>
+    <%=event.date%><br>
+  <%end%>
+  <a href="/logout">Log Out</a>
