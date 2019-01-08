@@ -3,4 +3,5 @@
   <%@planner.events.each do |event|%>
     <li><a href="/events/<%= event.date %>"> <%=event.date%></a></li>
   <%end%>
+  <a href="/events/new">Create a New Event</a>
   <a href="/logout">Log Out</a>
