@@ -1,22 +1,17 @@
 <div class="container">
   <header><img src="images/I5kI2OU.png" alt="event planner's logo" title="Welcome to Event Planner!" class="img-responsive main-image" align="middle" width="950"></header>
   <div class="col-md-8 col-md-offset-2">
-    <h2>Sinatra Template Default Page</h2>
+    <h2>Enjoy your event, we do the rest!</h2>
 
-    <div class="content">
-      <p>Welcome to the Sinatra Template! If you're seeing this page, then everything is working
-      as expected. To get started, delete this file (<code>app/views/welcome.erb)</code> and begin adding
-      your own actions to <code>application_controller.rb</code>. For more information, see the <a href="https://github.com/thebrianemory/corneal">README</a>.</p>
-    </div>
+    <div>      
+      <h3>Don't have an account?</h3>
+      <h4>Please sign up here:</h4><br>
+        <a href="/signup">Sign Up</a></div>
 
     <div class="sidebar">
-      <h3>Environment</h3>
-      <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-      </ul>
+      <h3>Alreay have an account?</h3>
+      <h4>Please log in here:</h4><br>
+        <a href="/login">Log In</a>
     </div>
 
   </div>
