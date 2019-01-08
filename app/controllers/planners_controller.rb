@@ -9,7 +9,7 @@ class PlannersController < ApplicationController
   end
 
   post '/signup' do 
-    @user = User.new(username: params[:username], password: params[:password])
+    @user = Planner.new(username: params[:username], password: params[:password])
     if @user.save
       session[:user_id] = @user.id
       redirect '/events'
@@ -27,7 +27,7 @@ class PlannersController < ApplicationController
   end
   
   post '/login' do
-    @user = User.find_by(:username => params[:username])
+    @user = Planner.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to "/events"
