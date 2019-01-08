@@ -2,7 +2,7 @@ class PlannersController < ApplicationController
   
   get '/signup' do
     if logged_in?
-      redirect "/events" 
+      redirect "/planner_events" 
     else
       erb :"planners/signup"
     end
@@ -20,7 +20,7 @@ class PlannersController < ApplicationController
   
   get '/login' do
     if logged_in?
-      erb :"/planners/events"
+      redirect "/planner_events" 
     else
       erb :"/planners/login"
     end
@@ -30,14 +30,14 @@ class PlannersController < ApplicationController
     @planner = Planner.find_by(:username => params[:username])
     if @planner && @planner.authenticate(params[:password])
       session[:planner_id] = @planner.id
-      erb :"/planners/events"
+      erb :"planners/planner_events"
     else 
       redirect to "/login"
     end
   end
   
-  get '/planners/:id' do
+  get '/planner_events' do
     @planner = Planner.find_by_id(params[:id])
-    erb :"/planners/events"
+    erb :"/planners/planner_events"
   end
 end
