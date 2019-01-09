@@ -14,9 +14,10 @@
   <% @category.each do |category| %>
   <input type="radio" name="event[category_id][]" id="<%=category.id %>" value="<%=category.id%>"><label><%=category.name %></label></input>
   <%end%>
-  <div><input type="radio" id="none" name="none">
+  <%#<div><input type="radio" id="none" name="none">
   <label for="dewey">None or the above</label>
-  </div><br><br>
+  </div>%>
+  <br><br>
   <label><strong><h3>If none is selected, please create a new Category:</h3></strong></label><br>
   <label>Name:</label>
     <input type="text" name="category[name]"></input><br><br>
