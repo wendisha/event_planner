@@ -33,7 +33,12 @@ class EventsController < ApplicationController
     end
   end
   
-  get '/events/:id/edit' do
+  get '/events/:id' do 
+    @event = Event.find_by_id(params[:id])
+    erb :'/events/show'
+  end
+  
+    get '/events/:id/edit' do
     if logged_in? 
       @event = Event.find_by_id(params[:id])
       erb :'/events/edit'
@@ -42,10 +47,18 @@ class EventsController < ApplicationController
     end
   end
   
-  get '/events/:id' do 
+  patch '/events/:id' do 
     @event = Event.find_by_id(params[:id])
-    erb :'/events/show'
-  end
+    if @event.planner_id == current_user.id && params[:date] != "" && params[:host_name] != "" && params[:budget] != ""  && logged_in?
+      @event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id])
+      redirect "/events/#{@event.id}"
+    elsif 
+      @event.planner_id == current_user.id && logged_in? && params[:date] == "" || params[:host_name] == "" || params[:budget] == ""
+      redirect "/events/#{@event.id}/edit"
+    else 
+      redirect "/events"
+    end
+  end 
   
   delete '/events/:id/delete' do 
     @event = Event.find_by_id(params[:id])
