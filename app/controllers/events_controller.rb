@@ -20,7 +20,14 @@ class EventsController < ApplicationController
   
   post '/events' do
     if params[:date] != "" && params[:host_name] != "" && params[:budget] != "" 
-      @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id) #How to shorten this line?
+      
+      #@event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id) #How to shorten this line?
+      @event = Event.create(params[:event])
+        if !params["category"]["name"].empty?
+          @category = Category.new(name: params["category"]["name"])
+          @event.category_id = @category.id
+          @event.save
+        end
       #binding.pry
       redirect "/events/#{@event.id}"
     else 
