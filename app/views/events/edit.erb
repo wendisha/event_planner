@@ -1,0 +1,8 @@
+<h1>Edit Event:<%= @event.date %></h1>
+ <form action="/events/<%= @event.id %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <input id="date" type="text" name="date" value="<%=@event.date%>"> 
+  <input id="host_name" type="text" name="host_name" value="<%=@event.host_name%>"> 
+  <input id="budget" type="text" name="budget" value="<%=@event.budget%>"> 
+  <input type="submit" value="submit">
+ </form> 

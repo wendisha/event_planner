@@ -33,11 +33,6 @@ class EventsController < ApplicationController
     end
   end
   
-  get '/events/:id' do 
-    @event = Event.find_by_id(params[:id])
-    erb :'/events/show'
-  end
-
   get '/events/:id/edit' do
     if logged_in? 
       @event = Event.find_by_id(params[:id])
@@ -45,6 +40,11 @@ class EventsController < ApplicationController
     else 
       redirect "/login"
     end
+  end
+  
+  get '/events/:id' do 
+    @event = Event.find_by_id(params[:id])
+    erb :'/events/show'
   end
   
   delete '/events/:id/delete' do 

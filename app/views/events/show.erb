@@ -1,17 +1,18 @@
-<h2><%=@event.date%></h2>
+<h2>Event's Date: <%=@event.date%></h2>
 <ul>
-  <li><%=@event.host_name%></li>
-  <li><%=@event.budget%></li>
-  <li><%=@event.category%></li>
+  <li>Host: <%=@event.host_name%></li>
+  <li>Budget: <%=@event.budget%></li>
+  <li>Category: <%=@event.category%></li>
 </ul>
+<br>
 
 <form action="/events/<%=@event.id%>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Event">
 </form>
-
+<br><br>
 <a href="events/edit">Edit Event | </a>
-<a href="/events/events">| See All Events | </a>
+<a href="/events/events"> See All Events | </a>
 <a href="/events/new">Create a New Event | </a>
 <a href="/logout">Log Out</a>
 
