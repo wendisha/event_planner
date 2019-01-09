@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   
   get '/events/new' do
     if logged_in?
+      @category = Category.all
       erb :'/events/new'
     else
        redirect "/login"
