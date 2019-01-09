@@ -1,9 +1,8 @@
-
-<h1>Welcome, <%=@planner.username.capitalize%></h1>
-  <h4>All Your Events:</h4><br>
+<h1>Welcome, <%=@planner.username.capitalize%></h1><br>
+  <h3>All Your Events:</h3><br>
   <%@planner.events.each do |event|%>
     <li><a href="/events/<%= event.date %>"> <%=event.date%></a></li>
   <%end%><br><br>
-  <a href="/events/events">| See All Events | </a>
+  <a href="/events">| See All Events | </a>
   <a href="/events/new">Create a New Event | </a>
   <a href="/logout">Log Out</a>

@@ -1,0 +1,10 @@
+<h1>Welcome, <%=@planner.username.capitalize%></h1><br>
+
+<h3>All Events:</h3><br>
+<%Event.all.each do |event|%>
+  <li><a href="/events/<%= event.date %>"> <%=event.date%></a></li>
+<%end%>
+<br><br>
+<a href="/planner_events">| See Your Events | </a>
+<a href="/events/new">Create a New Event | </a>
+<a href="/logout">Log Out</a>
