@@ -12,6 +12,7 @@ class PlannersController < ApplicationController
     @planner = Planner.new(username: params[:username], password: params[:password])
     if @planner.save
       session[:planner_id] = @planner.id
+
       redirect '/planner_events'
     else 
       redirect '/signup'
@@ -30,14 +31,17 @@ class PlannersController < ApplicationController
     @planner = Planner.find_by(:username => params[:username])
     if @planner && @planner.authenticate(params[:password])
       session[:planner_id] = @planner.id
-      erb :"planners/planner_events"
+      #binding.pry
+      redirect "/planner_events"
     else 
       redirect to "/login"
     end
   end
   
   get '/planner_events' do
-    @planner = Planner.find_by_id(params[:id])
+    #@planner = Planner.find_by_id(params[:id])
+    @planner = current_user
+
     erb :"/planners/planner_events"
   end
   
