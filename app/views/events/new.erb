@@ -9,7 +9,18 @@
   
   <label>Budget:</label>
   <input type="text" name="budget" id="budget"><br><br>
+    
+  <label>Category:</label>
+  <% Category.all.each do |category| %>
+  <input type="checkbox" name="event[category_ids][]" id="category_<%=category.id %>"><label><%=category.name %></label></input>
+  <%end%><br><br>
+  <label><strong><h3>Create New Category:</h3></strong></label><br>
+  <label>Name:</label>
+    <input type="text" name="category[name]" id="new_category"></input><br><br>
 
+    
+    
+    
     
   <input type="submit" value="Create">
 </form>
