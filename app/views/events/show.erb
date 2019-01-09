@@ -5,3 +5,13 @@
   <li><%=@event.category%></li>
 </ul>
 
+<form action="/events/<%=@event.id%>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Event">
+</form>
+
+<a href="events/edit">Edit Event | </a>
+<a href="/events/events">| See All Events | </a>
+<a href="/events/new">Create a New Event | </a>
+<a href="/logout">Log Out</a>
+
