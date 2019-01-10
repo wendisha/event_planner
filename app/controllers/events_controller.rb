@@ -24,9 +24,8 @@ class EventsController < ApplicationController
         if !params["category"]["name"].empty?
           @category = Category.create(name: params["category"]["name"])
           @event.category_id = @category.id
-          #binding.pry
-          #@event.save
         end
+
         #binding.pry
       redirect "/events/#{@event.id}"
     else 
