@@ -27,6 +27,7 @@ class EventsController < ApplicationController
           #binding.pry
           #@event.save
         end
+        #binding.pry
       redirect "/events/#{@event.id}"
     else 
       redirect '/events/new'

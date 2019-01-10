@@ -2,7 +2,8 @@
 <ul>
   <li>Host: <%=@event.host_name%></li>
   <li>Budget: <%=@event.budget%></li>
-  <li>Category: <%=@event.category%></li>
+  <li>Category: <%=@event.category_id%></li>
+
 </ul>
 <br>
 
@@ -10,9 +11,9 @@
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value=" Delete Event ">
 </form>
+
 <br><br>
 <a href="events/edit">Edit Event | </a>
 <a href="/events"> See All Events | </a>
 <a href="/events/new">Create a New Event | </a>
 <a href="/logout">Log Out</a>
-
