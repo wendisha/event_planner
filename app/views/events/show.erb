@@ -2,7 +2,10 @@
 <ul>
   <li>Host: <%=@event.host_name%></li>
   <li>Budget: <%=@event.budget%></li>
-  <li>Category: <%category_name=Category.find_by_id(@event.category_id).name%><%=category_name%></li>
+  <%#<li>Category: <%category_name=Category.find_by_id(@event.category_id).name%>%> <%#<%=category_name%>%> <%#</li>%>
+  <li>Category: <% @category_name%></li>
+  
+  <%binding.pry%>
 </ul>
 <br>
 

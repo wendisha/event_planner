@@ -20,12 +20,14 @@ class EventsController < ApplicationController
   
   post '/events' do
     if params[:date] != "" && params[:host_name] != "" && params[:budget] != "" 
-      @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
-        if !params["category"]["name"].empty?
-          @category = Category.create(name: params["category"]["name"])
-          @event.category_id = @category.id
-        end
-
+      if !params["category"]["name"].empty?
+        @category = Category.create(name: params["category"]["name"])
+        #@event.category_id = @category.id
+        @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id) #How to shorten this line?
+      else
+        @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
+      end
+      #@category_name = Category.find_by_id(@event.category_id).name
         #binding.pry
       redirect "/events/#{@event.id}"
     else 
@@ -60,7 +62,7 @@ class EventsController < ApplicationController
     end
   end 
   
-  delete '/events/:id/delete' do 
+  delete '/events/:id' do 
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id
       @event.delete
