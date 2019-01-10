@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   post '/events' do
     if params[:date] != "" && params[:host_name] != "" && params[:budget] != "" 
       if !params["category"]["name"].empty?
-        @category = Category.create(name: params["category"]["name"])
+        @category = Category.find_or_create_by(name: params["category"]["name"])
         #@event.category_id = @category.id
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id) #How to shorten this line?
       else
