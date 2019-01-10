@@ -2,7 +2,8 @@
 
 <h3>All Events:</h3><br>
 <%Event.all.each do |event|%>
-  <li><a href="/events/<%= event.date %>"> <%=event.date%></a></li>
+  <li><strong>Event's Date: </strong><%=event.date%><a href="/events/<%= event.id %>"> Show More</a></li><br>
+  
 <%end%>
 <br><br>
 <a href="/planner_events">| See Your Events | </a>
