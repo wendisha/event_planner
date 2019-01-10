@@ -1,7 +1,7 @@
 <h1>Welcome, <%=@planner.username.capitalize%></h1><br>
   <h3>All Your Events:</h3><br>
   <%@planner.events.each do |event|%>
-    <li><a href="/events/<%= event.date %>"> <%=event.date%></a></li>
+    <li><strong>Event's Date: </strong><%=event.date%><a href="/events/<%= event.id %>"> Show More</a></li><br>
   <%end%><br><br>
   <a href="/events">| See All Events | </a>
   <a href="/events/new">Create a New Event | </a>
