@@ -3,6 +3,7 @@ class EventsController < ApplicationController
     if logged_in?
       @events = Event.all
       @planner = current_user
+      #@category_name = Category.find_by_id(@event.category_id).name
       erb :"/events/events"
     else 
        redirect "/login"
@@ -19,7 +20,8 @@ class EventsController < ApplicationController
   end
   
   post '/events' do
-    if params[:date] != "" && params[:host_name] != "" && params[:budget] != "" 
+   # binding.pry
+  if params[:date] != "" && params[:host_name] != "" && params[:budget] != "" && (params[:category_id] != nil || params[:category][:name] != "") 
       if !params["category"]["name"].empty?
         @category = Category.find_or_create_by(name: params["category"]["name"])
                                                                   #@event.category_id = @category.id
@@ -35,13 +37,13 @@ class EventsController < ApplicationController
   end
   
   get '/events/:id' do 
+    #binding.pry
     @event = Event.find_by_id(params[:id])
-   # binding.pry
+    #binding.pry
     @category_name = Category.find_by_id(@event.category_id).name
 
     erb :'/events/show'
   end
-  
     get '/events/:id/edit' do
     if logged_in? 
       @event = Event.find_by_id(params[:id])
