@@ -1,8 +1,11 @@
 <h1>Edit Event:<%= @event.date %></h1>
  <form action="/events/<%= @event.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <input id="date" type="text" name="date" value="<%=@event.date%>"><br> 
+  <label>Date:</label>
+  <input id="date" type="date" name="date" value="<%=@event.date%>"><br>
+  <label>Host:</label>
   <input id="host_name" type="text" name="host_name" value="<%=@event.host_name%>"><br>
+  <label>Budget:</label>
   <input id="budget" type="text" name="budget" value="<%=@event.budget%>"><br><br>
   <label><strong>Select a Category:</strong></label><br><br>
   <% @category.each do |category| %>
