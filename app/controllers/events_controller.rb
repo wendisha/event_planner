@@ -39,6 +39,8 @@ class EventsController < ApplicationController
   get '/events/:id/edit' do
     if logged_in? 
       @event = Event.find_by_id(params[:id])
+      @category = Category.all
+      @category_name = Category.find_by_id(@event.category_id).name
       #binding.pry
       erb :'/events/edit'
     else 
