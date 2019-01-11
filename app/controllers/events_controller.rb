@@ -70,7 +70,7 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id
       @event.delete
-      redirect to '/events'
+      redirect to '/planner_events'
     else 
       redirect "/events"
     end
