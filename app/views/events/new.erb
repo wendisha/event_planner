@@ -2,21 +2,26 @@
 
 <form action="/events" method="POST">
   <label>Date:</label>
+
   <input type="date" name="date" id="date"><br><br>
   
+  
+
   <label>Host:</label>
+
   <input type="text" name="host_name" id="host_name"><br><br>
   
+
   <label>Budget:</label>
+
   <input type="text" name="budget" id="budget"><br><br>
     
-  <label>Select a Category:</label>
+  <label><strong>Select a Category:</strong></label><br><br>
   <% @category.each do |category| %>
   <input type="radio" name="category_id" id="<%=category.id %>" value="<%=category.id%>"><label><%=category.name %></label></input>
   <%end%>
   <br><br>
-  <label><strong><h3>If none is selected, please create a new Category:</h3></strong></label><br>
-  <label>Name:</label>
+  <label><strong>If none is selected, please create a new Category: </strong></label>
     <input type="text" name="category[name]"></input><br><br>
 
   <input type="submit" value=" Create ">
