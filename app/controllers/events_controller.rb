@@ -36,21 +36,22 @@ class EventsController < ApplicationController
     end
   end
   
+  get '/events/:id/edit' do
+    if logged_in? 
+      @event = Event.find_by_id(params[:id])
+      #binding.pry
+      erb :'/events/edit'
+    else 
+      redirect "/login"
+    end
+  end
+  
   get '/events/:id' do 
     #binding.pry
     @event = Event.find_by_id(params[:id])
     #binding.pry
     @category_name = Category.find_by_id(@event.category_id).name
-
     erb :'/events/show'
-  end
-    get '/events/:id/edit' do
-    if logged_in? 
-      @event = Event.find_by_id(params[:id])
-      erb :'/events/edit'
-    else 
-      redirect "/login"
-    end
   end
   
   patch '/events/:id' do 

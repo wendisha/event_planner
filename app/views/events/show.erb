@@ -3,8 +3,6 @@
   <li>Host: <%=@event.host_name%></li>
   <li>Budget: $<%=@event.budget%></li>
   <li>Category: <%=@category_name%></li>
-  
-  <%#binding.pry%>
 </ul>
 <br>
 
@@ -14,7 +12,7 @@
 </form>
 
 <br><br>
-<a href="events/edit">Edit Event | </a>
+<a href="/events/<%=@event.id%>/edit">Edit Event | </a>
 <a href="/events"> See All Events | </a>
 <a href="/planner_events">See Your Events | </a>
 <a href="/events/new">Create a New Event | </a>
