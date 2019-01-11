@@ -61,9 +61,12 @@ class EventsController < ApplicationController
     if @event.planner_id == current_user.id && params[:date] != "" && params[:host_name] != "" && params[:budget] != ""  && logged_in? && (params[:category_id] != nil || params[:category][:name] != "") 
       if !params["category"]["name"].empty?
         @category = Category.find_or_create_by(name: params["category"]["name"])
+        #binding.pry
         @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id) #How to shorten this line?
+        
       else
         @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
+        
       end
       #@event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id])
       redirect "/events/#{@event.id}"
