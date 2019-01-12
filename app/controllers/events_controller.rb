@@ -27,7 +27,7 @@ class EventsController < ApplicationController
       else
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
       end
-      binding.pry
+      #binding.pry
       redirect "/events/#{@event.id}"
     else 
       redirect '/events/new'
@@ -55,13 +55,11 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id && params[:date] != "" && params[:host_name] != "" && params[:budget] != ""  && logged_in? && (params[:category_id] != nil || params[:category][:name] != "") 
       if !params["category"]["name"].empty?
-        #binding.pry
         @category = Category.find_or_create_by(name: params["category"]["name"])
-        binding.pry
-        @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id)
-        #@category_name = Category.find_by_id(@event.category_id).name
-      else
-        @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
+        @event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id)
+        @event.save
+      else 
+        @event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id])
       end
       redirect "/events/#{@event.id}"
     elsif 
