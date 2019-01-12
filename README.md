@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <img src="images/I5kI2OU.png" alt="event planner's logo" title="Welcome to Event Planner!" width="160">
+  <img src="https://i.imgur.com/I5kI2OU.png" alt="event planner's logo" title="Welcome to Event Planner!" width="160">
 </h1>
 
 <h4 align="center">Enjoy your event, we'll do the rest!</h4>
