@@ -12,7 +12,7 @@
     
   <label><strong>Select a Category:</strong></label><br><br>
     <% @category.each do |category| %>
-      <input type="radio" name="category_id" id="<%=category.id %>" value="<%=category.id%>"><label><%=category.name %></label></input>
+      <input type="radio" name="category_id" id="<%=category.id %>" value="<%=category.id%>"><label><%= category.name %></label></input>
     <%end%><br><br>
     
   <label><strong>If none is selected, please create a new Category: </strong></label>
