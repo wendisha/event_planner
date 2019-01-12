@@ -44,4 +44,4 @@ $ cd event_planner
 
 ## License
 
-MIT  © [Akash Nimare](http://akashnimare.in)
+The web app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
