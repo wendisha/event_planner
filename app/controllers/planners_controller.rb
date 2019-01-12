@@ -31,7 +31,6 @@ class PlannersController < ApplicationController
     @planner = Planner.find_by(:username => params[:username])
     if @planner && @planner.authenticate(params[:password])
       session[:planner_id] = @planner.id
-      #binding.pry
       redirect "/planner_events"
     else 
       redirect to "/login"
@@ -41,7 +40,6 @@ class PlannersController < ApplicationController
   get '/planner_events' do
     #@planner = Planner.find_by_id(params[:id])
     @planner = current_user
-
     erb :"/planners/planner_events"
   end
   
