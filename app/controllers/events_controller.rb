@@ -36,6 +36,13 @@ class EventsController < ApplicationController
     end
   end
   
+  get '/events/:id' do 
+    #binding.pry
+    @event = Event.find_by_id(params[:id])
+    @category_name = Category.find_by_id(@event.category_id).name
+    erb :'/events/show'
+  end
+  
   get '/events/:id/edit' do
     if logged_in? 
       @event = Event.find_by_id(params[:id])
@@ -48,23 +55,16 @@ class EventsController < ApplicationController
     end
   end
   
-  get '/events/:id' do 
-    #binding.pry
-    @event = Event.find_by_id(params[:id])
-    #binding.pry
-    @category_name = Category.find_by_id(@event.category_id).name
-    erb :'/events/show'
-  end
+
   
   patch '/events/:id' do 
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id && params[:date] != "" && params[:host_name] != "" && params[:budget] != ""  && logged_in? && (params[:category_id] != nil || params[:category][:name] != "") 
       if !params["category"]["name"].empty?
-        @category = Category.find_or_create_by(name: params["category"]["name"])
-        #binding.pry
+          @category = Category.find_or_create_by(name: params["category"]["name"])
         @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => @category.id) #How to shorten this line?
-        
       else
+        # binding.pry
         @event = Event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
         
       end
