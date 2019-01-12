@@ -27,7 +27,7 @@ class EventsController < ApplicationController
       else
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
       end
-      binding.pry
+      #binding.pry
       redirect "/events/#{@event.id}"
     else 
       redirect '/events/new'
