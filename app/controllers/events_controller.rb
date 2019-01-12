@@ -1,4 +1,8 @@
+require "rack-flash"
+
 class EventsController < ApplicationController
+  enable :sessions
+  use Rack::Flash
   
   get "/events" do
     if logged_in?
@@ -27,7 +31,7 @@ class EventsController < ApplicationController
       else
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
       end
-      #binding.pry
+      flash[:message] = "Successfully created event."
       redirect "/events/#{@event.id}"
     else 
       redirect '/events/new'

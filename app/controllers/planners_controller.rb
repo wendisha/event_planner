@@ -1,4 +1,8 @@
+require "rack-flash"
+
 class PlannersController < ApplicationController
+  enable :sessions
+  use Rack::Flash
   
   get '/signup' do
     if logged_in?
@@ -12,7 +16,6 @@ class PlannersController < ApplicationController
     @planner = Planner.new(username: params[:username], password: params[:password])
     if @planner.save
       session[:planner_id] = @planner.id
-
       redirect '/planner_events'
     else 
       redirect '/signup'
@@ -33,6 +36,7 @@ class PlannersController < ApplicationController
       session[:planner_id] = @planner.id
       redirect "/planner_events"
     else 
+      #flash[:message] = "Please, try again."
       redirect to "/login"
     end
   end
