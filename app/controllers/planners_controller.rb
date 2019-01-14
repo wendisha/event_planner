@@ -6,10 +6,8 @@ class PlannersController < ApplicationController
   
   get '/signup' do
     if logged_in?
-      flash[:message] = "Successfully registered!"
       redirect "/planner_events" 
     else
-      flash[:message] = "Please try again."
       erb :"planners/signup"
     end
   end
@@ -18,10 +16,10 @@ class PlannersController < ApplicationController
     @planner = Planner.new(username: params[:username], password: params[:password])
     if @planner.save
       session[:planner_id] = @planner.id
-      #flash[:message] = "Successfully registered!"
+      flash[:message] = "Successfully registered!"
       redirect '/planner_events'
     else 
-      #flash[:message] = "Please try again."
+      flash[:message] = "Please try again."
       redirect '/signup'
     end
   end 
@@ -30,6 +28,7 @@ class PlannersController < ApplicationController
     if logged_in?
       redirect "/planner_events" 
     else
+      #flash.now[:message] = "User or password not found. Please try again."
       erb :"/planners/login"
     end
   end
@@ -40,7 +39,7 @@ class PlannersController < ApplicationController
       session[:planner_id] = @planner.id
       redirect "/planner_events"
     else 
-      #flash[:message] = "User or password not found. Please try again."    ?????
+      flash.now[:message] = "User or password not found. Please try again."   # ?????
       redirect to "/login"
     end
   end
