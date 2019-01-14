@@ -19,7 +19,7 @@ class PlannersController < ApplicationController
       flash[:message] = "Successfully registered!"
       redirect '/planner_events'
     else 
-      flash[:message] = "Please try again."
+      flash[:error_signup] = "Please try again."
       redirect '/signup'
     end
   end 
@@ -28,7 +28,6 @@ class PlannersController < ApplicationController
     if logged_in?
       redirect "/planner_events" 
     else
-      #flash.now[:message] = "User or password not found. Please try again."
       erb :"/planners/login"
     end
   end
@@ -39,7 +38,7 @@ class PlannersController < ApplicationController
       session[:planner_id] = @planner.id
       redirect "/planner_events"
     else 
-      flash.now[:message] = "User or password not found. Please try again."   # ?????
+      flash[:error_login] = "User or password not found. Please try again."   # ?????
       redirect to "/login"
     end
   end

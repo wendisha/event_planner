@@ -17,13 +17,24 @@
   </head>
   <body>
     <div class="wrapper">
-       
       <div><% if flash.has?(:message) %>
         <div style="background-color:#c2f0f0;" align="middle" >
         <%= flash[:message] %>
-      <% end %></div><br><br>
-
+      <% end %></div>
+      
+      <div><% if flash.has?(:error_signup) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:error_signup] %>
+      <% end %></div>
+      
+      <div><% if flash.has?(:error_login) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:error_login] %>
+      <% end %></div>
         <%= yield %>
+      
+
+       
 
       <footer class="branding">
         <small>&copy; 2019 <strong>Event Planner</strong></small>
