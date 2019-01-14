@@ -37,6 +37,20 @@
         <%= flash[:error_event_create] %>
       <% end %></div>
       
+      <div><% if flash.has?(:event_edit_success) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:event_edit_success] %>
+      <% end %></div>
+      
+      <div><% if flash.has?(:error_one_event_edit) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:error_one_event_edit] %>
+      <% end %></div>
+      
+      <div><% if flash.has?(:error_two_event_edit) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:error_two_event_edit] %>
+      <% end %></div>
       <br>  
       <%= yield %>
       

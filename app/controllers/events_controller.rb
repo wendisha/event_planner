@@ -66,10 +66,16 @@ class EventsController < ApplicationController
       else 
         @event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id])
       end
+      flash[:event_edit_success] = "Success! Event updated."
       redirect "/events/#{@event.id}"
     elsif 
       @event.planner_id == current_user.id && logged_in? && params[:date] == "" || params[:host_name] == "" || params[:budget] == "" || (params[:category_id] == nil || params[:category][:name] == "") 
+      flash[:error_one_event_edit] = "Please make sure you fill out all required fields."
       redirect "/events/#{@event.id}/edit"
+    elsif 
+      @event.planner_id != current_user.id
+      flash[:error_two_event_edit] = "You can only edit events you have created."
+      redirect "/events"
     else 
       redirect "/events"
     end

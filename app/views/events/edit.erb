@@ -1,4 +1,4 @@
-<h1>Edit Event:<%= @event.date %></h1>
+<h1>Edit Event: <%= @event.date %></h1>
  <form action="/events/<%= @event.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <label>Date:</label>
