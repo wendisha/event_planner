@@ -17,6 +17,11 @@
   </head>
   <body>
     <div class="wrapper">
+       
+      <div><% if flash.has?(:message) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:message] %>
+      <% end %></div><br><br>
 
         <%= yield %>
 
