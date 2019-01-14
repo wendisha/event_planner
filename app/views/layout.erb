@@ -51,6 +51,16 @@
         <div style="background-color:#c2f0f0;" align="middle" >
         <%= flash[:error_two_event_edit] %>
       <% end %></div>
+      
+      <div><% if flash.has?(:event_delete_success) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:event_delete_success] %>
+      <% end %></div>
+      
+      <div><% if flash.has?(:error_event_delete) %>
+        <div style="background-color:#c2f0f0;" align="middle" >
+        <%= flash[:error_event_delete] %>
+      <% end %></div>
       <br>  
       <%= yield %>
       

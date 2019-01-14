@@ -85,8 +85,10 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id
       @event.delete
+      flash[:event_delete_success] = "Event successfully deleted."
       redirect to '/planner_events'
     else 
+      flash[:error_event_delete] = "You can only delete events you have created."
       redirect "/events"
     end
   end
