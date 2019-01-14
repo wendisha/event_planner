@@ -38,7 +38,7 @@ class PlannersController < ApplicationController
       session[:planner_id] = @planner.id
       redirect "/planner_events"
     else 
-      flash[:error_login] = "User or password not found. Please try again."   # ?????
+      flash[:error_login] = "User or password not found. Please try again." 
       redirect to "/login"
     end
   end

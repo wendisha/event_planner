@@ -31,9 +31,10 @@ class EventsController < ApplicationController
       else
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
       end
-      flash[:message] = "Event successfully created."
+      flash[:event_create_success] = "Event successfully created."
       redirect "/events/#{@event.id}"
     else 
+      flash[:error_event_create] = "Event not created. Please make sure you fill out all required fields and try again."
       redirect '/events/new'
     end
   end
