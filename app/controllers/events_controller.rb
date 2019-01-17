@@ -1,9 +1,5 @@
-require "rack-flash"
-
 class EventsController < ApplicationController
-  enable :sessions
-  use Rack::Flash
-  
+
   get "/events" do
     if logged_in?
       @events = Event.all
@@ -31,10 +27,10 @@ class EventsController < ApplicationController
       else
         @event = Event.create(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id]) #How to shorten this line?
       end
-      flash[:event_create_success] = "Event successfully created."
+      flash[:message] = "Event successfully created."
       redirect "/events/#{@event.id}"
     else 
-      flash[:error_event_create] = "Event not created. Please make sure you fill out all required fields and try again."
+      flash[:message] = "Event not created. Please make sure you fill out all required fields and try again."
       redirect '/events/new'
     end
   end
@@ -66,15 +62,15 @@ class EventsController < ApplicationController
       else 
         @event.update(:date => params[:date], :host_name => params[:host_name], :budget => params[:budget], :planner_id => current_user.id, :category_id => params[:category_id])
       end
-      flash[:event_edit_success] = "Success! Event updated."
+      flash[:message] = "Success! Event updated."
       redirect "/events/#{@event.id}"
     elsif 
       @event.planner_id == current_user.id && logged_in? && params[:date] == "" || params[:host_name] == "" || params[:budget] == "" || (params[:category_id] == nil || params[:category][:name] == "") 
-      flash[:error_one_event_edit] = "Please make sure you fill out all required fields."
+      flash[:message] = "Please make sure you fill out all required fields."
       redirect "/events/#{@event.id}/edit"
     elsif 
       @event.planner_id != current_user.id
-      flash[:error_two_event_edit] = "You can only edit events you have created."
+      flash[:message] = "You can only edit events you have created."
       redirect "/events"
     else 
       redirect "/events"
@@ -85,10 +81,10 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     if @event.planner_id == current_user.id
       @event.delete
-      flash[:event_delete_success] = "Event successfully deleted."
+      flash[:message] = "Event successfully deleted."
       redirect to '/planner_events'
     else 
-      flash[:error_event_delete] = "You can only delete events you have created."
+      flash[:message] = "You can only delete events you have created."
       redirect "/events"
     end
   end

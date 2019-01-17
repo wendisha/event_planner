@@ -1,9 +1,5 @@
-require "rack-flash"
-
 class PlannersController < ApplicationController
-  enable :sessions
-  use Rack::Flash
-  
+
   get '/signup' do
     if logged_in?
       redirect "/planner_events" 
@@ -15,7 +11,7 @@ class PlannersController < ApplicationController
   post '/signup' do 
     @planner = Planner.find_by(:username => params[:username])
     if @planner
-      flash[:error_signup] = "Please try again."
+      flash[:message] = "Please try again."
       redirect '/signup'
     else
       @planner = Planner.new(username: params[:username], password: params[:password])
@@ -24,7 +20,7 @@ class PlannersController < ApplicationController
         flash[:message] = "Successfully registered!"
         redirect '/planner_events'
       else 
-        #flash[:error_signup] = "Please try again."
+        flash[:message] = "Please try again."
         redirect '/signup'
       end
     end
@@ -44,7 +40,7 @@ class PlannersController < ApplicationController
       session[:planner_id] = @planner.id
       redirect "/planner_events"
     else 
-      flash[:error_login] = "User or password not found. Please try again." 
+      flash[:message] = "User or password not found. Please try again." 
       redirect to "/login"
     end
   end
