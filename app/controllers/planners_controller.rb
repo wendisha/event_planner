@@ -13,14 +13,20 @@ class PlannersController < ApplicationController
   end
 
   post '/signup' do 
-    @planner = Planner.new(username: params[:username], password: params[:password])
-    if @planner.save
-      session[:planner_id] = @planner.id
-      flash[:message] = "Successfully registered!"
-      redirect '/planner_events'
-    else 
+    @planner = Planner.find_by(:username => params[:username])
+    if @planner
       flash[:error_signup] = "Please try again."
       redirect '/signup'
+    else
+      @planner = Planner.new(username: params[:username], password: params[:password])
+      if @planner.save
+        session[:planner_id] = @planner.id
+        flash[:message] = "Successfully registered!"
+        redirect '/planner_events'
+      else 
+        #flash[:error_signup] = "Please try again."
+        redirect '/signup'
+      end
     end
   end 
   
