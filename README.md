@@ -11,10 +11,8 @@ Event Planner is a Web Application designed to boosts your productivity :rocket:
 
 
 # Demo
-👉 Watch it <a href="https://www.youtube.com/watch?v=6SG2Mjpv8YE">here</a>.
+👉 Watch it <a href="https://www.youtube.com/watch?v=XkM3RwwNyQQ&t=37s">here</a>.
 <br>
-
-<img src="https://j.gifs.com/BBqE8Y.gif">
 
 
 ## Installation for OS X, Windows, Linux
