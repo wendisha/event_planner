@@ -11,7 +11,7 @@ class PlannersController < ApplicationController
   post '/signup' do 
     @planner = Planner.find_by(:username => params[:username])
     if @planner
-      flash[:message] = "Please try again."
+      flash[:message] = "Please choose another username."
       redirect '/signup'
     else
       @planner = Planner.new(username: params[:username], password: params[:password])
