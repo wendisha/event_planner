@@ -7,11 +7,11 @@
 
 <h4 align="center">Enjoy your event, we'll do the rest!</h4>
 
-Event Planner is a Web Application designed to boosts your productivity :rocket: by creating an online record of your up-coming events' most important information.
+Event Planner is a Web Application designed to boosts your productivity by creating an online record of your up-coming events' most important information.
 
 
 # Demo
-👉 Watch it <a href="https://www.youtube.com/watch?v=XkM3RwwNyQQ&t=37s">here</a>.
+Watch it <a href="https://www.youtube.com/watch?v=XkM3RwwNyQQ&t=37s">here</a>.
 <br>
 
 
