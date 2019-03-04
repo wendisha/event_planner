@@ -17,9 +17,18 @@ Watch it <a href="https://www.youtube.com/watch?v=XkM3RwwNyQQ&t=37s">here</a>.
 
 ## Installation for OS X, Windows, Linux
 
-1. Open your preferred browser
-2. Navigate to www.events_planner.com
-3. Done! :raised_hands:
+Clone this repository and then execute:
+$ bundle
+
+Uses Ruby v2.4.2
+
+Then run:
+$ rake db:migrate
+
+Then run:
+$ thin start --ssl
+
+Then open page in browser according to web address displayed in terminal (ex. https://localhost:3000).
 
 
 ### For developers
